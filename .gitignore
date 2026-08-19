@@ -1,0 +1,17 @@
+# PyCharm project settings (personal, not shared)
+.idea/
+
+# Python virtual environment
+venv/
+.venv/
+
+# Python cache files
+__pycache__/
+*.pyc
+
+# Secrets - API keys go here later, never commit this
+.env
+
+# OS clutter
+.DS_Store
+Thumbs.db
