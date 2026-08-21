@@ -1,0 +1,11 @@
+Junior Python Developer - London
+
+We're looking for a junior Python developer to join our small team. You'll work on our internal tools and APIs.
+
+Requirements:
+- Basic Python knowledge
+- Familiarity with Git
+- Willingness to learn Django or Flask
+- Good communication skills
+
+Nice to have: SQL experience, understanding of REST APIs.
