@@ -22,3 +22,9 @@ Wired up the Anthropic Claude API: created llm_client.py with get_client() and a
 Set up .env (real key, git-ignored) and .env.example (placeholder, safe to commit). 
 First successful live API call - got "Hello!" back from Claude. 
 Learned about free trial credits and per-token pricing (Haiku 4.5: $1/$5 per million input/output tokens - genuinely cheap for this project's scale).
+
+
+### Day 6 — 24 Aug 2026
+Built fit_scorer.py: a single prompt that sends CV + job text to Claude and gets back a structured JSON fit score (0-100) plus 3 reasons.
+Learned about prompt templates, asking for JSON-only output, and defensively stripping markdown code fences since models don't always follow formatting instructions perfectly.
+First test: score 65 with specific, accurate reasoning about missing Git experience.
