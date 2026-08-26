@@ -28,3 +28,9 @@ Learned about free trial credits and per-token pricing (Haiku 4.5: $1/$5 per mil
 Built fit_scorer.py: a single prompt that sends CV + job text to Claude and gets back a structured JSON fit score (0-100) plus 3 reasons.
 Learned about prompt templates, asking for JSON-only output, and defensively stripping markdown code fences since models don't always follow formatting instructions perfectly.
 First test: score 65 with specific, accurate reasoning about missing Git experience.
+
+
+### Day 7 — 25 Aug 2026
+Built cli.py with click: `python cli.py score --cv ... --job ...` now runs the whole pipeline end-to-end from the command line.
+This is the MVP - a real, usable tool, not just a script I edit and re-run in PyCharm.
+Hit a Windows quirk where plain `python` in PowerShell triggered the Microsoft Store stub instead of running the real interpreter - fixed by calling the full path directly.
