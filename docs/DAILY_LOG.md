@@ -34,3 +34,10 @@ First test: score 65 with specific, accurate reasoning about missing Git experie
 Built cli.py with click: `python cli.py score --cv ... --job ...` now runs the whole pipeline end-to-end from the command line.
 This is the MVP - a real, usable tool, not just a script I edit and re-run in PyCharm.
 Hit a Windows quirk where plain `python` in PowerShell triggered the Microsoft Store stub instead of running the real interpreter - fixed by calling the full path directly.
+
+
+### Day 8 — 26 Aug 2026
+Built agent.py: the core tool-calling agent loop.
+Claude can now request to run a Python tool mid-conversation, our code executes it and feeds the result back, and this repeats until Claude has a final answer.
+Proved it works with a throwaway count_words tool - asked it to count words in a sentence and it called the tool and got the exact right answer (9), rather than guessing.
+This is the foundation every remaining feature (fetch_job_posting, keyword_gap_analysis, draft_cover_letter) will plug into as real tools.
