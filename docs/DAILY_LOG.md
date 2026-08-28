@@ -41,3 +41,9 @@ Built agent.py: the core tool-calling agent loop.
 Claude can now request to run a Python tool mid-conversation, our code executes it and feeds the result back, and this repeats until Claude has a final answer.
 Proved it works with a throwaway count_words tool - asked it to count words in a sentence and it called the tool and got the exact right answer (9), rather than guessing.
 This is the foundation every remaining feature (fetch_job_posting, keyword_gap_analysis, draft_cover_letter) will plug into as real tools.
+
+
+### Day 9 — 27 Aug 2026
+Replaced the Day 8 demo tool with the first real one: fetch_job_posting, reusing job_loader.load_job() as the underlying function.
+Also added a try/except around tool execution so network/file errors get reported back to Claude instead of crashing the program.
+Tested by asking the agent to read a local job posting and summarize the tech stack mentioned - it correctly separated required vs "nice to have" skills.

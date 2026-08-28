@@ -1,6 +1,7 @@
 from src.jobhunt_agent.agent import run_agent
 
 answer = run_agent(
-    "How many words are in this sentence: 'The quick brown fox jumps over the lazy dog'?"
+    "Fetch the job posting at sample_data/job_example.txt and tell me what "
+    "programming languages or frameworks it mentions."
 )
 print(answer)
