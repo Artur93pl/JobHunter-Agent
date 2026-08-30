@@ -47,3 +47,11 @@ This is the foundation every remaining feature (fetch_job_posting, keyword_gap_a
 Replaced the Day 8 demo tool with the first real one: fetch_job_posting, reusing job_loader.load_job() as the underlying function.
 Also added a try/except around tool execution so network/file errors get reported back to Claude instead of crashing the program.
 Tested by asking the agent to read a local job posting and summarize the tech stack mentioned - it correctly separated required vs "nice to have" skills.
+
+
+### Day 10 — 30 Aug 2026
+Added read_cv as a second real tool, wrapping cv_loader.load_cv() the same way fetch_job_posting wraps job_loader.
+Confirmed the agent can call multiple tools in sequence within one conversation.
+Added keyword_gap_analysis: a new tool (not just wrapping existing code) that compares CV text against job text using a curated list of common skill keywords, returning matched vs missing skills.
+Tested by asking the agent to read both files and report the gap - it correctly chained all three tools (read_cv, fetch_job_posting, keyword_gap_analysis) in one go and produced a clear, well-organized answer with recommendations.
+This is the first time the agent's genuine multi-step reasoning was visible, not just one tool call.
