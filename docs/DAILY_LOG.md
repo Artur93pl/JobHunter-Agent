@@ -54,4 +54,10 @@ Added read_cv as a second real tool, wrapping cv_loader.load_cv() the same way f
 Confirmed the agent can call multiple tools in sequence within one conversation.
 Added keyword_gap_analysis: a new tool (not just wrapping existing code) that compares CV text against job text using a curated list of common skill keywords, returning matched vs missing skills.
 Tested by asking the agent to read both files and report the gap - it correctly chained all three tools (read_cv, fetch_job_posting, keyword_gap_analysis) in one go and produced a clear, well-organized answer with recommendations.
-This is the first time the agent's genuine multi-step reasoning was visible, not just one tool call.
+This is the first time the agent's genuine multistep reasoning was visible, not just one tool call.
+
+
+### Day 11 Aug 2026
+Added the fourth and final planned tool, draft_cover_letter, which internally makes its own Claude call - a tool can itself be an AI-powered step, not just plain logic (like keyword_gap_analysis) or a file/URL wrapper (like the first two tools).
+Manually tested the full four-tool pipeline (read_cv, fetch_job_posting, keyword_gap_analysis, draft_cover_letter) against a brand-new job posting (Graduate Software Engineer) the code had never seen, to check for real bugs rather than just re-running the same fixtures. Result: clean pass, no bugs found - correct skill gaps identified (Git, Docker, AWS, REST APIs, testing, CI/CD) and a genuinely tailored, specific cover letter paragraph produced.
+All four tools chaining together in one agent conversation, decided entirely by Claude.

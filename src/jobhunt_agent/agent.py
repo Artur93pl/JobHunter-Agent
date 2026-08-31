@@ -4,6 +4,7 @@ from src.jobhunt_agent.cv_loader import load_cv
 from src.jobhunt_agent.job_loader import load_job
 from src.jobhunt_agent.keyword_gap import keyword_gap_analysis
 from src.jobhunt_agent.llm_client import get_client, MODEL
+from src.jobhunt_agent.cover_letter import draft_cover_letter
 
 
 # Maps a tool's name (as Claude refers to it) to the actual Python function that runs it.
@@ -11,6 +12,7 @@ AVAILABLE_TOOLS = {
     "fetch_job_posting": load_job,
     "read_cv": load_cv,
     "keyword_gap_analysis": keyword_gap_analysis,
+    "draft_cover_letter": draft_cover_letter,
 }
 
 # Describes each tool to Claude: its name, what it does, and what input it expects.
@@ -30,6 +32,22 @@ TOOL_DEFINITIONS = [
                 }
             },
             "required": ["source"],
+        },
+    },
+    {
+        "name": "draft_cover_letter",
+        "description": (
+            "Draft a tailored cover letter paragraph for a candidate, based on "
+            "their CV and a job posting. Use this once you have both texts and "
+            "the user wants a cover letter."
+        ),
+        "input_schema": {
+            "type": "object",
+            "properties": {
+                "cv_text": {"type": "string", "description": "The full CV text."},
+                "job_text": {"type": "string", "description": "The full job posting text."},
+            },
+            "required": ["cv_text", "job_text"],
         },
     },
     {

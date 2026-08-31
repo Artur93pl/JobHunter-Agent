@@ -1,0 +1,11 @@
+Graduate Software Engineer - Remote (UK)
+
+We're a small SaaS startup hiring our first graduate engineer. You'll help build and maintain our backend services.
+
+Requirements:
+- Python
+- Git and GitHub
+- Basic understanding of testing (pytest or similar)
+- Comfortable learning Docker and AWS on the job
+
+Nice to have: CI/CD experience, exposure to REST APIs.
