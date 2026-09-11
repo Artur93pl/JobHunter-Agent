@@ -5,7 +5,9 @@ from src.jobhunt_agent.job_loader import load_job
 from src.jobhunt_agent.keyword_gap import keyword_gap_analysis
 from src.jobhunt_agent.llm_client import get_client, MODEL
 from src.jobhunt_agent.cover_letter import draft_cover_letter
+from src.jobhunt_agent.logging_config import setup_logging
 
+logger = setup_logging()
 
 # Maps a tool's name (as Claude refers to it) to the actual Python function that runs it.
 AVAILABLE_TOOLS = {
@@ -106,10 +108,12 @@ def run_agent(user_message: str) -> str:
         tool_results = []
         for block in response.content:
             if block.type == "tool_use":
+                logger.info(f"Agent calling tool: {block.name} with input: {block.input}")
                 tool_function = AVAILABLE_TOOLS[block.name]
                 try:
                     result = tool_function(**block.input)
                 except Exception as error:
+                    logger.error(f"Tool {block.name} failed: {error}")
                     result = f"Error running tool: {error}"
 
                 tool_results.append(

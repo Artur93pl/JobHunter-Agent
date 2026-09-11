@@ -57,7 +57,15 @@ Tested by asking the agent to read both files and report the gap - it correctly 
 This is the first time the agent's genuine multistep reasoning was visible, not just one tool call.
 
 
-### Day 11 Aug 2026
+### Day 11 - 31 Aug 2026
 Added the fourth and final planned tool, draft_cover_letter, which internally makes its own Claude call - a tool can itself be an AI-powered step, not just plain logic (like keyword_gap_analysis) or a file/URL wrapper (like the first two tools).
 Manually tested the full four-tool pipeline (read_cv, fetch_job_posting, keyword_gap_analysis, draft_cover_letter) against a brand-new job posting (Graduate Software Engineer) the code had never seen, to check for real bugs rather than just re-running the same fixtures. Result: clean pass, no bugs found - correct skill gaps identified (Git, Docker, AWS, REST APIs, testing, CI/CD) and a genuinely tailored, specific cover letter paragraph produced.
 All four tools chaining together in one agent conversation, decided entirely by Claude.
+
+
+### Day 12 — 11 Sep 2026 
+Added output_writer.py (saves agent results to timestamped markdown files under outputs/) and logging_config.py (logs to both console and logs/jobhunt_agent.log).
+Wired logging into agent.py so every tool call gets recorded.
+Added a real `analyze` CLI command that runs the full 4-tool agent and saves the result - closing a gap where the CLI only ever exposed the old single-shot scorer, not the actual agent.
+Hit one bug: forgot to paste the new command into cli.py the first time, got "No such command 'analyze'" - fixed by adding it properly below the score command.
+Confirmed both outputs/ and logs/ folders get created automatically and are git-ignored (may contain personal CV/job data).
