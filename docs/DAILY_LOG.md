@@ -69,3 +69,9 @@ Wired logging into agent.py so every tool call gets recorded.
 Added a real `analyze` CLI command that runs the full 4-tool agent and saves the result - closing a gap where the CLI only ever exposed the old single-shot scorer, not the actual agent.
 Hit one bug: forgot to paste the new command into cli.py the first time, got "No such command 'analyze'" - fixed by adding it properly below the score command.
 Confirmed both outputs/ and logs/ folders get created automatically and are git-ignored (may contain personal CV/job data).
+
+
+### Days 13 — 12 Sep 2026
+Added error handling to the CLI: score and analyze commands now catch exceptions and raise click.ClickException, giving clean "Error: ..." messages instead of raw Python tracebacks.
+Set up pytest and wrote 6 tests: happy-path and missing-file cases for cv_loader and job_loader, a correctness check for keyword_gap_analysis, and a mocked test for the agent loop (using unittest.mock.patch to fake the Claude API client, so the test runs free and instantly rather than making a real paid call).
+All 6 tests pass.
