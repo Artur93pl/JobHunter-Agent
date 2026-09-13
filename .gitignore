@@ -19,3 +19,6 @@ Thumbs.db
 # Folders woth log and output analysis/
 outputs/
 logs/
+
+# Build/packaging artifacts (auto-created by pip install -e .)
+*.egg-info/

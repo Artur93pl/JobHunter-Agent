@@ -1,10 +1,10 @@
 # The agent loop: lets Claude decide which tools to call and when.
 
+from src.jobhunt_agent.cover_letter import draft_cover_letter
 from src.jobhunt_agent.cv_loader import load_cv
 from src.jobhunt_agent.job_loader import load_job
 from src.jobhunt_agent.keyword_gap import keyword_gap_analysis
-from src.jobhunt_agent.llm_client import get_client, MODEL
-from src.jobhunt_agent.cover_letter import draft_cover_letter
+from src.jobhunt_agent.llm_client import MODEL, get_client
 from src.jobhunt_agent.logging_config import setup_logging
 
 logger = setup_logging()

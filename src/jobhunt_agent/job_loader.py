@@ -5,6 +5,7 @@ from pathlib import Path
 import requests
 from bs4 import BeautifulSoup
 
+
 def load_job(source: str) -> str:
     """
     Load a job posting from either a URL or a local text file.
@@ -19,7 +20,7 @@ def load_job(source: str) -> str:
         FileNotFoundError: if source looks like a local path but doesn't exist.
         requests.HTTPError: if fetching the URL fails.
     """
-    if source.startswith("http://") or source.startswith("https://"):
+    if source.startswith(("http://", "https://")):
         response = requests.get(source, timeout=10)
         response.raise_for_status()
         soup = BeautifulSoup(response.text, "html.parser")

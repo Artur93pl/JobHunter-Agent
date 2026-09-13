@@ -2,6 +2,10 @@
 
 from pathlib import Path
 
+from docx import Document
+from pypdf import PdfReader
+
+
 def load_cv(path: str) -> str:
     """
        Read a CV file and return its text content.
@@ -19,4 +23,13 @@ def load_cv(path: str) -> str:
     if not cv_path.exists():
         raise FileNotFoundError(f"No CV found at {path}")
 
+    suffix = cv_path.suffix.lower()
+
+    if suffix == ".pdf":
+        reader = PdfReader(cv_path)
+        return "\n".join(page.extract_text() or "" for page in reader.pages)
+
+    if suffix == ".docx":
+        document = Document(cv_path)
+        return "\n".join(paragraph.text for paragraph in document.paragraphs)
     return cv_path.read_text(encoding="utf-8")

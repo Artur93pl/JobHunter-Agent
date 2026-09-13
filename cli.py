@@ -3,16 +3,15 @@
 import click
 
 from src.jobhunt_agent.agent import run_agent
-from src.jobhunt_agent.output_writer import save_output
 from src.jobhunt_agent.cv_loader import load_cv
-from src.jobhunt_agent.job_loader import load_job
 from src.jobhunt_agent.fit_scorer import score_fit
+from src.jobhunt_agent.job_loader import load_job
+from src.jobhunt_agent.output_writer import save_output
 
 
 @click.group()
 def cli():
     """JobHunt Agent - AI-powered CV/job fit scoring."""
-    pass
 
 
 @cli.command()

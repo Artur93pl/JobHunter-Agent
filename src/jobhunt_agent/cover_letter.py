@@ -1,6 +1,6 @@
 # Draft a tailored cover letter paragraph using Claude, based on a CV and job posting.
 
-from src.jobhunt_agent.llm_client import get_client, MODEL
+from src.jobhunt_agent.llm_client import MODEL, get_client
 
 PROMPT_TEMPLATE = """Write a single, tailored cover letter paragraph (3-5 sentences) \
 for this candidate applying to this job. Be specific - reference real details from \

@@ -2,7 +2,7 @@
 
 import json
 
-from src.jobhunt_agent.llm_client import get_client, MODEL
+from src.jobhunt_agent.llm_client import MODEL, get_client
 
 PROMPT_TEMPLATE = """You are helping a job seeker understand how well their CV matches a job posting.
 
@@ -44,8 +44,7 @@ def score_fit(cv_text: str, job_text: str) -> dict:
     # strip that off if present, so json.loads() doesn't choke on it.
     if raw_text.startswith("```"):
         raw_text = raw_text.strip("`")
-        if raw_text.startswith("json"):
-            raw_text = raw_text[4:]
+        raw_text = raw_text.removeprefix("json")
         raw_text = raw_text.strip()
 
     return json.loads(raw_text)
