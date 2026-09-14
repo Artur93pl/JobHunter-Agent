@@ -71,13 +71,20 @@ Hit one bug: forgot to paste the new command into cli.py the first time, got "No
 Confirmed both outputs/ and logs/ folders get created automatically and are git-ignored (may contain personal CV/job data).
 
 
-### Days 12 — 12 Sep 2026
+### Day 12 — 12 Sep 2026
 Added error handling to the CLI: score and analyze commands now catch exceptions and raise click.ClickException, giving clean "Error: ..." messages instead of raw Python tracebacks.
 Set up pytest and wrote 6 tests: happy-path and missing-file cases for cv_loader and job_loader, a correctness check for keyword_gap_analysis, and a mocked test for the agent loop (using unittest.mock.patch to fake the Claude API client, so the test runs free and instantly rather than making a real paid call).
 All 6 tests pass.
 
-### Days 13 — 13 Sep 2026
+### Day 13 — 13 Sep 2026
 Added a GitHub Actions workflow so tests run automatically on every push.
 Set up `ruff` for linting, learned the recurring Windows PATH issue firsthand (console scripts installed by pip aren't automatically on PATH) and fixed it properly by adding Python's Scripts folder to my system PATH, instead of routing around it each time.
 Packaged the project with `pyproject.toml` so it installs as a real command (`jobhunt score ...`) via `pip install -e .`. Finally extended the CV loader to read `.pdf` and `.docx` files (via `pypdf` and `python-docx`), not just plain text, since real CVs come in those formats.
 Next: bug bash and edge-case fixes across the whole project.
+
+### Day 14 — 14 Sep 2026
+Run a bug bash across the project: added missing test coverage for the PDF/DOCX CV loading, then deliberately tried to break the CLI with bad inputs.
+Found and fixed two real bugs — a mislabeled file (e.g. a PDF renamed to .txt) crashed with a raw Python encoding error instead of a clear message, and a broken job-posting URL leaked internal `requests` library internals to the user.
+Both now raise clean, human-readable errors while still preserving the technical detail for debugging.
+Learned that "the code works" and "the code fails gracefully" are different bars, and that deliberately trying to break your own tool surfaces real issues automated tests can miss.
+Next: README rewrite and a demo recording.

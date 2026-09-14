@@ -21,8 +21,11 @@ def load_job(source: str) -> str:
         requests.HTTPError: if fetching the URL fails.
     """
     if source.startswith(("http://", "https://")):
-        response = requests.get(source, timeout=10)
-        response.raise_for_status()
+        try:
+            response = requests.get(source, timeout=10)
+            response.raise_for_status()
+        except requests.exceptions.RequestException as error:
+            raise ValueError(f"Could not fetch job posting from {source}: {error}") from error
         soup = BeautifulSoup(response.text, "html.parser")
         text = soup.get_text(separator="\n")
         lines = [line.strip() for line in text.splitlines() if line.strip()]

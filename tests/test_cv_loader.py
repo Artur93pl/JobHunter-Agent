@@ -13,3 +13,14 @@ def test_load_cv_reads_file_content(tmp_path):
 def test_load_cv_missing_file_raises_error():
     with pytest.raises(FileNotFoundError):
         load_cv("this_file_does_not_exist.txt")
+
+def test_load_cv_pdf():
+    text = load_cv("sample_data/sample_cv.pdf")
+    assert "Alex Morgan" in text
+    assert len(text) > 0
+
+
+def test_load_cv_docx():
+    text = load_cv("sample_data/sample_cv.docx")
+    assert "Alex Morgan" in text
+    assert len(text) > 0

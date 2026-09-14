@@ -32,4 +32,10 @@ def load_cv(path: str) -> str:
     if suffix == ".docx":
         document = Document(cv_path)
         return "\n".join(paragraph.text for paragraph in document.paragraphs)
-    return cv_path.read_text(encoding="utf-8")
+    try:
+        return cv_path.read_text(encoding="utf-8")
+    except UnicodeDecodeError as error:
+        raise ValueError(
+            f"Could not read {path} as a text file. If this is a PDF or Word "
+            "document, make sure it has a .pdf or .docx extension."
+        ) from error
