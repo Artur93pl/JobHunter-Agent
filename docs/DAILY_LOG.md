@@ -82,7 +82,7 @@ Set up `ruff` for linting, learned the recurring Windows PATH issue firsthand (c
 Packaged the project with `pyproject.toml` so it installs as a real command (`jobhunt score ...`) via `pip install -e .`. Finally extended the CV loader to read `.pdf` and `.docx` files (via `pypdf` and `python-docx`), not just plain text, since real CVs come in those formats.
 Next: bug bash and edge-case fixes across the whole project.
 
-### Day 14 — 14 Sep 2026
+### Day 14-15 — 14 Sep 2026
 Run a bug bash across the project: added missing test coverage for the PDF/DOCX CV loading, then deliberately tried to break the CLI with bad inputs.
 Found and fixed two real bugs — a mislabeled file (e.g. a PDF renamed to .txt) crashed with a raw Python encoding error instead of a clear message, and a broken job-posting URL leaked internal `requests` library internals to the user.
 Both now raise clean, human-readable errors while still preserving the technical detail for debugging.
