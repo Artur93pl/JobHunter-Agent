@@ -109,4 +109,4 @@ GitHub (some sessions covered more ground than others). See
 
 ## Demo
 
-[Watch the demo](docs/demo.mp4)
+![Demo](docs/demo.gif)
