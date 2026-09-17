@@ -109,4 +109,4 @@ GitHub (some sessions covered more ground than others). See
 
 ## Demo
 
-<video src="docs/demo.mp4" controls width="700"></video>
+[Watch the demo](docs/demo.mp4)
