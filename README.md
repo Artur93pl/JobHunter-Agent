@@ -106,3 +106,7 @@ Built as a portfolio project over 15 coding sessions, each one pushed to
 GitHub (some sessions covered more ground than others). See
 [docs/DAILY_LOG.md](docs/DAILY_LOG.md) for a day-by-day build log, and
 [CHANGELOG.md](CHANGELOG.md) for a summary of what shipped when.
+
+## Demo
+
+<video src="docs/demo.mp4" controls width="700"></video>

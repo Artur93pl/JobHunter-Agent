@@ -88,3 +88,12 @@ Found and fixed two real bugs — a mislabeled file (e.g. a PDF renamed to .txt)
 Both now raise clean, human-readable errors while still preserving the technical detail for debugging.
 Learned that "the code works" and "the code fails gracefully" are different bars, and that deliberately trying to break your own tool surfaces real issues automated tests can miss.
 Next: README rewrite and a demo recording.
+
+### Day 16 — 15 Sep 2026
+Rewrote README.md to accurately describe the project's features, usage, and
+structure, and fixed the CLI's --help text for both `score` and `analyze`
+(it still said ".txt file" for the CV option even after PDF/DOCX support
+was added on Day 14). Learned that docs drifting out of sync with the
+actual code is its own kind of bug - nobody had noticed the wrong help
+text until this review. Built CHANGELOG.md, keeping it aligned with the
+real git commit history. Next: final cleanup and ship day.

@@ -15,7 +15,7 @@ def cli():
 
 
 @cli.command()
-@click.option("--cv", required=True, help="Path to your CV (.txt, .pdf, or .docx file).")
+@click.option("--cv", "cv_path", required=True, help="Path to your CV (.txt, .pdf, or .docx file).")
 @click.option("--job", "job_path", required=True, help="Path to the job posting (.txt file or URL).")
 def score(cv_path, job_path):
     """Score how well your CV fits a job posting."""
@@ -33,7 +33,7 @@ def score(cv_path, job_path):
         click.echo(f"  - {reason}")
 
 @cli.command()
-@click.option("--cv", required=True, help="Path to your CV (.txt, .pdf, or .docx file).")
+@click.option("--cv", "cv_path", required=True, help="Path to your CV (.txt, .pdf, or .docx file).")
 @click.option("--job", "job_path", required=True, help="Path to the job posting (.txt file or URL).")
 def analyze(cv_path, job_path):
     """Run the full AI agent: skill gap analysis + tailored cover letter, saved to a file."""
